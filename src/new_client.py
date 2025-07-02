@@ -32,8 +32,8 @@ class NotebookLMClient:
 
     # -----------------------------
     def _extract_reqid(self) -> int | None:
-        pattern = r'_reqid=(\d+)'
-        match = re.search(pattern, self.curl_data['url'])
+        pattern = r"_reqid=(\d+)"
+        match = re.search(pattern, self.curl_data["url"])
         if match:
             return int(match.group(1))
         else:
@@ -52,17 +52,19 @@ class NotebookLMClient:
         Xây dựng URL cho lệnh xóa một notebook:
         - giữ lại tất cả các thông số khác của curl_data['url']
         - thay thế rpcids bằng "WWINqb"
-        - tăng _reqid lên một mỗi lần gọi delete để tránh trùng lặp 
+        - tăng _reqid lên một mỗi lần gọi delete để tránh trùng lặp
         - (có lẽ google dùng _reqid để chống tấn công trùng lặp: hiện giờ trùng lặp không sao)
         """
         DEL_RPCID = "WWINqb"
         assert self._reqid is not None
         self._reqid += 1
-        
-        rpcids_pattern = r'rpcids=[^&]*'
-        reqid_pattern = pattern = r'_reqid=\d+'
-        delete_url = re.sub(rpcids_pattern, f'rpcids={DEL_RPCID}', self.curl_data['url'])
-        delete_url = re.sub(reqid_pattern, f'_reqid={self._reqid}', delete_url)
+
+        rpcids_pattern = r"rpcids=[^&]*"
+        reqid_pattern = pattern = r"_reqid=\d+"
+        delete_url = re.sub(
+            rpcids_pattern, f"rpcids={DEL_RPCID}", self.curl_data["url"]
+        )
+        delete_url = re.sub(reqid_pattern, f"_reqid={self._reqid}", delete_url)
         return delete_url
 
     def get_all_notebooks(self) -> str | None:
@@ -86,7 +88,7 @@ class NotebookLMClient:
 
     def delete_notebook(self, notebook_id: str) -> tuple[bool, str]:
         """Gửi request để xóa một notebook cụ thể."""
-        delete_freq_template = '[[["WWINqb","[[\"{notebook_id}\"],[2]]",null,"generic"]]]'
+        delete_freq_template = '[[["WWINqb","[["{notebook_id}"],[2]]",null,"generic"]]]'
         payload_dict = {
             "f.req": delete_freq_template.format(notebook_id=notebook_id),
             "at": self.curl_data["list_payload"]["at"],

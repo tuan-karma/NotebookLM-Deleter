@@ -76,7 +76,9 @@ class TestNotebookLMClient(unittest.TestCase):
         self.assertIn("Invalid f.req", message)
 
         # Kiểm tra xem `session.post` có được gọi với đúng payload xóa không
-        expected_delete_url = "https://notebooklm.google.com/api?rpcids=WWINqb&_reqid=102"
+        expected_delete_url = (
+            "https://notebooklm.google.com/api?rpcids=WWINqb&_reqid=102"
+        )
         expected_payload = {
             "f.req": r'[[["WWINqb","[[\"test-id-123\"],[2]]",null,"generic"]]]',
             "at": "TEST_AT_TOKEN:123456",

@@ -43,8 +43,8 @@ def select_nbs_to_delete(notebooks: list[dict[str, str]]) -> list[dict[str, str]
         confirm = input("Bạn có chắc chắn không? (nhập 'y' để xác nhận): ")
         if confirm.lower() != "y":
             print("Hành động đã được hủy.")
-            return[]
-        
+            return []
+
         return notebooks_to_delete
 
     except (ValueError, IndexError):
@@ -53,10 +53,12 @@ def select_nbs_to_delete(notebooks: list[dict[str, str]]) -> list[dict[str, str]
     except Exception as e:
         print(f"Đã xảy ra lỗi không mong muốn: {e}")
         return []
-    
+
+
 if __name__ == "__main__":
     """For manual tests"""
     from pprint import pprint
+
     notebooks = [
         {"title": "title 1", "id": "id1"},
         {"title": "title 2", "id": "id2"},

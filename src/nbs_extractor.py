@@ -1,5 +1,6 @@
 import json
 
+
 def extract_notebooks(response_text: str) -> list[dict[str, str]]:
     try:
         outer_list = response_text.split("\n")[3]

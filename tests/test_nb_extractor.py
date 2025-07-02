@@ -26,9 +26,7 @@ class TestNotebookExtractor(unittest.TestCase):
         # self.assertEqual(len(nb_list), 3, "Must found exact 3 notebooks")
 
         # Check the first notebook
-        self.assertEqual(
-            nb_list[0]["title"], "Notebook Name 1"
-        )
+        self.assertEqual(nb_list[0]["title"], "Notebook Name 1")
         self.assertEqual(nb_list[0]["id"], "1bf5f3d9-7a14-4b97-8af8-7e9c7c1101b9")
 
         # Check the second notebook
@@ -36,9 +34,7 @@ class TestNotebookExtractor(unittest.TestCase):
         self.assertEqual(nb_list[1]["id"], "029d0fa0-7db8-4ada-a1a2-d96890800e60")
 
         # Check the third notebook
-        self.assertEqual(
-            nb_list[2]["title"], "Notebook Name 3"
-        )
+        self.assertEqual(nb_list[2]["title"], "Notebook Name 3")
         self.assertEqual(nb_list[2]["id"], "03663619-8bec-475e-b401-635999254980")
 
 
