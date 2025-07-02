@@ -12,7 +12,7 @@ def run_app(client: NotebookLMClient):
     """
     # 1. Fetch & Extract
     response_text = client.get_all_notebooks()
-    if response_text == None:
+    if response_text is None:
         return
     if '"e",4,null,null,143' in response_text:
         print("Có lỗi khi lấy danh sách từ server")

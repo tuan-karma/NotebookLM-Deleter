@@ -3,8 +3,6 @@
 import requests
 import time
 import re
-from urllib.parse import urlparse, urlunparse, urlencode
-from requests_toolbelt.utils import dump  # Optional, để in ra cURL
 
 
 class NotebookLMClient:
@@ -52,14 +50,14 @@ class NotebookLMClient:
         - giữ lại tất cả các thông số khác của curl_data['url']
         - thay thế rpcids bằng "WWINqb"
         - tăng _reqid lên một mỗi lần gọi delete để tránh trùng lặp
-        - (có lẽ google dùng _reqid để chống tấn công trùng lặp: hiện giờ trùng lặp không sao)
+        - có thể google dùng _reqid để chống tấn công trùng lặp trong tương lai
         """
         DEL_RPCID = "WWINqb"
         assert self._reqid is not None
         self._reqid += 1
 
         rpcids_pattern = r"rpcids=[^&]*"
-        reqid_pattern = pattern = r"_reqid=\d+"
+        reqid_pattern = r"_reqid=\d+"
         delete_url = re.sub(
             rpcids_pattern, f"rpcids={DEL_RPCID}", self.curl_data["url"]
         )

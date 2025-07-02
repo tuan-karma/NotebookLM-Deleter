@@ -2,11 +2,11 @@ def select_nbs_to_delete(notebooks: list[dict[str, str]]) -> list[dict[str, str]
     """
     Giao tiếp với người dùng qua dòng lệnh CLI.
     Từ danh sách các notebooks hiện có dạng [{title: title, id: id}, ...].
-    Trả về danh sách các nb cần xóa (tập hợp con của danh sách vào) [{title: title, id:id}, ...]
+    Trả về danh sách các nb cần xóa [{title: title, id:id}, ...]
     """
     print("\n--- DANH SÁCH NOTEBOOKS HIỆN CÓ ---")
     for i, nb in enumerate(notebooks):
-        print(f"{i+1:2d}: {nb['title']} (ID: {nb['id']})")
+        print(f"{i + 1:2d}: {nb['title']} (ID: {nb['id']})")
 
     print("\nNhập số thứ tự của các notebooks bạn muốn xóa (ví dụ: 1, 3, 5-8):")
 
