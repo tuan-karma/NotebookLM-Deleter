@@ -105,8 +105,8 @@ Mọi đóng góp, báo lỗi (issue) hay yêu cầu tính năng (pull request) 
 
 ## Kế Hoạch Tương Lai
 
-- [ ] Chuyển đổi bộ kiểm thử từ `unittest` sang `pytest` để code test gọn gàng và mạnh mẽ hơn.
-- [ ] Thêm CI/CD để tiện mở rộng dự án trong tương lai (nếu mọi người hưởng ứng hehe).
+- [x] Chuyển đổi bộ kiểm thử từ `unittest` sang `pytest` để code test gọn gàng và mạnh mẽ hơn.
+- [x] Thêm CI/CD để tiện mở rộng dự án trong tương lai (nếu mọi người hưởng ứng hehe).
 
 ## Giấy Phép
 
